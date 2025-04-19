@@ -1,3 +1,4 @@
+
 class usuario {
     constructor(id, username, senha, email, idade, nivel_comunicacao){
         this.id = id;
@@ -6,6 +7,9 @@ class usuario {
         this.email = email;
         this.idade = idade;
         this.nivel_comunicacao = nivel_comunicacao;
+    }
+    exibirPerfil(){
+        return `Usuario: ${this.username} | Idade : ${this.idade} | Comunicação: ${this.nivel_comunicacao}`
     }
 }
 
@@ -24,6 +28,21 @@ class personagem {
         this.id = id;
         this.nome = nome;
         this.personalidade = personalidade;
+    }
+    interagir(mensagem){
+        const msg = mensagem.toLowerCase();
+
+        if (msg.includes("ansioso") || msg.includes("ansiedade")) {
+            return `${this.nome}: Sinto muito por saber disso. Quer conversar sobre o que está te deixando assim?`;
+        } else if (msg.includes("feliz") || msg.includes("alegre")) {
+            return `${this.nome}: Que bom saber disso! Fico feliz por você. Quer me contar o que deixou seu dia melhor?`;
+        } else if (msg.includes("triste") || msg.includes("chateado")) {
+            return `${this.nome}: Poxa... às vezes tudo parece difícil mesmo. Mas estou aqui pra ouvir você.`;
+        } else if (msg.includes("nervoso") || msg.includes("raiva")) {
+            return `${this.nome}: Entendo... respirar fundo ajuda. Quer me contar o que aconteceu?`;
+        } else {
+            return `${this.nome}: Entendi. Me conta mais sobre isso, quero te ouvir.`;
+        }
     }
 }
 class conversa {
@@ -46,9 +65,11 @@ class feedback {
 }
 
 function mensagemBoasVindas (usuario){
-console.log("\nSeja bem vindo(a) ao Autismind, ${usuario.username}!");
-console.log("Estamos aqui para ajudar você a se expressar e se comunicar do seu jeito, no seu tempo.");
-console.log("vamos começar");
+    console.log(`\nSeja bem vindo(a) ao Autismind, ${usuario.username}!`);
+    console.log("Estamos aqui para ajudar você a se expressar e se comunicar do seu jeito, no seu tempo.");
+    console.log("Vamos começar");
 }
 
+
 mensagemBoasVindas (usuario)
+}
